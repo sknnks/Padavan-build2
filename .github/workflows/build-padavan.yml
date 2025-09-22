@@ -134,8 +134,8 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW=n" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_TRANSMISSION_WEB_CONTROL=n" >> .config
         echo "CONFIG_FIRMWARE_CPU_SLEEP=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=n" >> .config
         ######################################################
         sed -i '/CONFIG_MTD_STORE_PART_SIZ/c\CONFIG_MTD_STORE_PART_SIZ=0x900000' configs/boards/PSG1218/kernel-3.4.x.config
         sed -i '/size_tmp="24M"/c\size_tmp="8M"' user/scripts/dev_init.sh
