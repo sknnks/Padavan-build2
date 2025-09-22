@@ -31,7 +31,7 @@ jobs:
         if [ $KERNEL = "4.4" ] ; then
         git clone --depth=1 https://github.com/MeIsReallyBa/padavan-4.4.git /opt/rt-n56u
         else
-        git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
+        git clone --depth=1 https://github.com/sknnks/rt-n56uB.git /opt/rt-n56u
         fi
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
@@ -42,100 +42,6 @@ jobs:
         KERNEL: 3.4
       run: |
         cd /opt/rt-n56u/trunk
-        if [ ! -f configs/templates/$TNAME.config ] ; then
-        echo "configs/templates/$TNAME.config not found "
-        exit 1
-        fi
-        cp -f configs/templates/$TNAME.config .config
-        #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
-        #格式如下：
-        #sed -i '/自定义项/d' .config
-        #echo "自定义项=y" >> .config
-        ######################################################
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_GDUT_DRCOM/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_DOGCOM/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_MINIEAP/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_NAPT66/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CLIENT/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CMD/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_VLMCSD/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_TTYD/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_LRZSZ/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_HTOP/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_NANO/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_IPERF3/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_DUMP1090/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_RTL_SDR/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SMBD36/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_MTR/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SOCAT/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SRELAY/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_3PROXY/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_MENTOHUST/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPC/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPS/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_TUNSAFE/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_WIREGUARD/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SMARTDNS/d' .config
-        ######################################################
-        echo "CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_GDUT_DRCOM=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_DOGCOM=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_MINIEAP=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_NAPT66=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CLIENT=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CMD=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_VLMCSD=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_TTYD=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_LRZSZ=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_HTOP=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_NANO=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_IPERF3=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_DUMP1090=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_RTL_SDR=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_SMBD36=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_MTR=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_SOCAT=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_3PROXY=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_MENTOHUST=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_FRPC=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_FRPS=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_TUNSAFE=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=n" >> .config
-        ######################################################
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_QOS/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SMBD36/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_DDNS_SSL/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_HTTPS/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_DROPBEAR/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_DROPBEAR_FAST_CODE/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_XUPNPD/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_TRANSMISSION_WEB_CONTROL/d' .config
-        sed -i '/CONFIG_FIRMWARE_CPU_SLEEP/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_TROJAN/d' .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config
-        echo "CONFIG_FIRMWARE_INCLUDE_QOS=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_SMBD36=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_DDNS_SSL=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_HTTPS=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_DROPBEAR=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_DROPBEAR_FAST_CODE=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_XUPNPD=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_TRANSMISSION_WEB_CONTROL=n" >> .config
-        echo "CONFIG_FIRMWARE_CPU_SLEEP=y" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=n" >> .config
         ######################################################
         sed -i '/CONFIG_MTD_STORE_PART_SIZ/c\CONFIG_MTD_STORE_PART_SIZ=0x900000' configs/boards/PSG1218/kernel-3.4.x.config
         sed -i '/size_tmp="24M"/c\size_tmp="8M"' user/scripts/dev_init.sh
